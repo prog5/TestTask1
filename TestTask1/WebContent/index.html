@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script type="text/javascript" src="jquery-2.1.4.js"></script>
+        <!-- Стили datepicker -->
+		<link type="text/css" href="jquery-ui-1.11.4/redmond/jquery-ui.css" rel="stylesheet" />
+		<!-- Скрипт datepicker -->
+        <script type="text/javascript" src="jquery-ui-1.11.4/jquery-ui.js"></script>
+        <!-- Локализация datepicker -->
+        <script type="text/javascript" src="jquery-ui-1.11.4/jquery.ui.datepicker-ru.js"></script>
+        <script type="text/javascript">
+        	$(function(){
+				$('#post').click(function(e){
+					var formData = {
+				            "firstname":$("#firstname").val()
+				            , "lastname":$("#lastname").val()
+				            , "middlename":$("#middlename").val()
+				            , "dateOfBirth":$("#dateOfBirth").val()
+				        };
+				        $.ajax({
+				        	headers: { 
+				                'Accept': 'application/json',
+				                'Content-Type': 'application/json' 
+				            },
+				            'type': 'POST',
+				            'url': 'rest/members',
+				            'data': JSON.stringify(formData),
+				            'dataType': 'json',
+				            success: function(res) {
+				                
+				            }
+				        });
+					})
+                });
+        	$(function(){
+				$('#get').click(function(e){
+					$.getJSON('rest/members',function(json){
+						$('#lastname').val(json.lastname);
+						$('#firstname').val(json.firstname);
+						$('#middlename').val(json.middlename);
+						$('#dateOfBirth').val(json.dateOfBirth);
+						})
+					})
+                });
+        	$(function() {
+        		$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+    		    $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+    		    $( "#dateOfBirth" ).datepicker();    		    
+    		  });
+        </script>
+    </head>
+    <body>
+    	<h1>Тестовое задание</h1>
+    	<form  method="get" id="form">
+		  <p>Фамилия <input type="text" id="lastname" value=""></p>
+		  <p>Имя <input type="text" id="firstname" value=""></p>
+		  <p>Отчество <input type="text" id="middlename" value=""></p>
+		  <p>Дата рождения <input type="text" id="dateOfBirth" value=""></p>
+		</form>
+    	<button id="post">Сохранить</button>
+    	<button id="get">Прочитать</button> 
+    </body>
+</html>
