@@ -1,27 +1,25 @@
 package ru.bankitb.TestTask1.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 
-public class Member implements Serializable {
+public class Member {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private String firstname;
 	private String lastname;
 	private String middlename;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	
 	public Member() {
     }
 	
 	
-    public Member(String firstname, String lastname, String middlename, Date dateOfBirth) {
+    public Member(String firstname, String lastname, String middlename, String dateOfBirth) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.middlename = middlename;
@@ -53,11 +51,11 @@ public class Member implements Serializable {
         this.middlename = middlename;
     }
     
-    public Date getdateOfBirth() {
+    public String getdateOfBirth() {
         return this.dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }

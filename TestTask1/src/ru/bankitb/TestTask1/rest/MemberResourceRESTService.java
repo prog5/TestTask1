@@ -16,27 +16,6 @@ import ru.bankitb.TestTask1.ejb.*;
 
 public class MemberResourceRESTService {
 	
-	    @Produces(MediaType.APPLICATION_JSON)
-	    @GET
-	    public Member getMember() {
-	    	try{
-
-	    		Context ctx = new InitialContext();
-		        MemberBean myBean = (MemberBean) ctx.lookup("java:global/TestTask1/MemberBean");
-		        Member member = myBean.getMember();
-
-		        if (member == null)	 {
-		            return new Member();
-		        }
-
-		        return member;
-		        
-	    		}catch (Exception e ) {
-	    			e.printStackTrace();
-	    		}
-			return null;
-	      }
-	    
 	    @Consumes(MediaType.APPLICATION_JSON)
 	    @POST
 	    
@@ -58,4 +37,26 @@ public class MemberResourceRESTService {
 	    		}
 			return null;
 	      }
+	    
+	    @Produces(MediaType.APPLICATION_JSON)
+	    @GET
+	    
+	    public Member getMember() {
+	    	try{
+
+	    		Context ctx = new InitialContext();
+		        MemberBean myBean = (MemberBean) ctx.lookup("java:global/TestTask1/MemberBean");
+		        Member member = myBean.getMember();
+
+		        if (member == null)	 {
+		            return new Member();
+		        }
+
+		        return member;
+		        
+	    		}catch (Exception e ) {
+	    			e.printStackTrace();
+	    		}
+			return null;
+	      }	    
 }	

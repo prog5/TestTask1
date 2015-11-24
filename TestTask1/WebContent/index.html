@@ -14,7 +14,7 @@
 				            "firstname":$("#firstname").val()
 				            , "lastname":$("#lastname").val()
 				            , "middlename":$("#middlename").val()
-				            , "dateOfBirth":$("#dateOfBirth").val()
+				            , "dateOfBirth":$("#dateOfBirth").datepicker( "getDate" ).toJSON()
 				        };
 				        $.ajax({
 				        	headers: { 
@@ -31,13 +31,14 @@
 				        });
 					})
                 });
+
         	$(function(){
 				$('#get').click(function(e){
 					$.getJSON('rest/members',function(json){
 						$('#lastname').val(json.lastname);
 						$('#firstname').val(json.firstname);
 						$('#middlename').val(json.middlename);
-						$('#dateOfBirth').val(json.dateOfBirth);
+						$('#dateOfBirth').datepicker( "setDate", Date.parse(json.dateOfBirth) );
 						})
 					})
                 });
