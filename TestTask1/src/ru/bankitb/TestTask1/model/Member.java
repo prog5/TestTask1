@@ -1,7 +1,5 @@
 package ru.bankitb.TestTask1.model;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
